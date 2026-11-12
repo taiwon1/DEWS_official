@@ -10,7 +10,7 @@ export const members = [
   { id: 'demo-8', name: '한시온', category: '새가족 · 교육 완료', initials: '시온', absent: 0 },
 ]
 export const events = [
-  { id: 1, day: '15', month: '11', category: '예배', title: '함께 드리는 주일예배', description: '한 주의 시작을 예배로 함께해요.', when: '11월 15일 일요일', location: '예배 장소는 운영 시 등록됩니다', color: 'mint' },
-  { id: 2, day: '22', month: '11', category: '공동체', title: '마음을 나누는 소그룹', description: '우리의 일상과 기도제목을 나누는 시간.', when: '11월 22일 일요일', location: '소그룹별 모임', color: 'cream' },
-  { id: 3, day: '29', month: '11', category: '동아리', title: '취향으로 만나는 우리', description: '좋아하는 것을 함께하며 가까워져요.', when: '11월 29일 일요일', location: '동아리별 안내 예정', color: 'blue' },
+  { id: 1, day: '15', month: '11', category: '예배', title: '주일예배', description: '예배 시간과 장소를 확인하세요.', when: '11월 15일 일요일', location: '예배 장소는 운영 시 등록됩니다', color: 'mint' },
+  { id: 2, day: '22', month: '11', category: '공동체', title: '소그룹 모임', description: '소그룹별 모임 일정입니다.', when: '11월 22일 일요일', location: '소그룹별 모임', color: 'cream' },
+  { id: 3, day: '29', month: '11', category: '동아리', title: '동아리 모임', description: '동아리별 활동 안내입니다.', when: '11월 29일 일요일', location: '동아리별 안내 예정', color: 'blue' },
 ]
