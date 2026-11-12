@@ -18,7 +18,6 @@ export default function App() {
     { label: '출석', title: '출석 체크', desc: '주일예배와 소그룹 참석 여부를 기록합니다.', icon: <CheckCheck />, page: 'attendance' as Page },
     { label: '돌봄', title: '돌봄 대상', desc: '결석 기간과 연락이 필요한 청년을 확인합니다.', icon: <Users />, page: 'care' as Page },
     { label: '일정', title: '행사 일정', desc: '예정된 예배와 청년부 행사 일정을 확인합니다.', icon: <CalendarDays />, page: 'events' as Page },
-    
   ]
   return <>
     <a href="#main" className="skip-link">본문으로 이동</a>
