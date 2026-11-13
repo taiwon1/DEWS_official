@@ -39,3 +39,11 @@
 - https://supabase.com/docs/guides/cron
 - https://developers.cloudflare.com/pages/functions/pricing/
 - https://www.docker.com/products/personal/
+
+## 2026-11-13 로컬 구현 결과 (위 계획의 후속 상태)
+
+React + TypeScript + Vite + pnpm과 Docker 기반 Supabase를 실제 로컬 환경에 연결했다. PostgreSQL 관계·트랜잭션을 이용해 교육/출석/소속 이력을 연결하고 예약 개편 실패 시 부분 적용을 방지했다. 서버 RPC에서 실제 로그인 사용자와 담당 범위를 검사하며 직접 테이블 접근은 차단한다. 19개 역할별 계정 및 18개 통합 시나리오를 검증했다.
+
+Docker는 이번에도 사용한다. 로컬 인증·DB·예약 작업 재현 용도이며 화면 개발은 Node로 실행한다. 이 결과는 클라우드 무료 운영 검증이나 배포 완료를 뜻하지 않는다. Cloudflare/Supabase 클라우드 플랜은 아직 연결하지 않았고 최신 비용 조건은 배포 시 재확인한다. 유료 알림톡·AI 기능을 활성화하지 않았다.
+
+이름+생일 ID를 내부 인증 식별자로 변환하는 로컬 구현과 초대 토큰을 추가했다. 운영용 복구/중복 이름 정책과 가입 제한은 여전히 확정이 필요하다. 상세 한계는 IMPLEMENTATION_STATUS.md 참조.

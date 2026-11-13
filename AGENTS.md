@@ -12,6 +12,7 @@
 - 핵심 목표는 출석 관리 효율화와 돌봄 대상 누락 방지다. 기능 추가보다 이 목표를 우선한다.
 - 개인정보는 보수적으로 설계한다. 직책과 담당 범위를 함께 검사하며, 화면에서 숨기는 것만으로 권한 통제를 대신하지 않는다.
 - 초기 구현은 React + TypeScript + Vite + pnpm으로 시작했다. Supabase/Docker 및 Cloudflare 연결 상태는 README와 docs/IMPLEMENTATION_STATUS.md에서 확인한다.
+- 커밋 제목은 `feat: 익명 댓글 추가`, `fix: 출석 권한 수정`, `docs: 테스트 안내 정리`처럼 짧은 한국어로 작성한다. 참고 저장소는 taiwon1/WELIVE, taiwon1/skyhope-mileage. 이미 푸시한 이력은 제목 변경만을 위해 강제 재작성하지 않는다.
 
 ## 빠른 주의 사항
 - 정회원·재적 편입: 첫 방문일부터 6개월 경과 AND 1~4주차 교육 이수. 교육 완료일부터 6개월이 아니다.

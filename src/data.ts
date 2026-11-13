@@ -15,5 +15,5 @@ export const events = [
   { id: 3, day: '29', month: '11', category: '동아리', title: '동아리 모임', description: '동아리별 활동 안내입니다.', when: '11월 29일 일요일', location: '동아리별 안내 예정', color: 'blue' },
 ]
 
-export type CommunityEvent = typeof events[number] & { date: string; posterUrl?: string }
+export type CommunityEvent = Omit<typeof events[number], 'id'> & { id: number|string; date: string; posterUrl?: string }
 export const calendarEvents: CommunityEvent[] = events.map(event => ({ ...event, date: `2026-${event.month}-${event.day}` }))

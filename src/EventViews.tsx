@@ -3,18 +3,18 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, CalendarDays, MapPin } from 'l
 import { calendarEvents, type CommunityEvent } from './data'
 import './events.css'
 
-type Props = { onOpen: (event: CommunityEvent) => void }
+type Props = { onOpen: (event: CommunityEvent) => void; events?: CommunityEvent[] }
 const weekdays = ['일', '월', '화', '수', '목', '금', '토']
 const dateKey = (year: number, month: number, day: number) => `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
 
-export function PosterBoard({ onOpen }: Props) {
-  return <div className="poster-board">{calendarEvents.map(event => <button className="poster-item" key={event.id} onClick={() => onOpen(event)}>
+export function PosterBoard({ onOpen, events = calendarEvents }: Props) {
+  return <div className="poster-board">{events.map(event => <button className="poster-item" key={event.id} onClick={() => onOpen(event)}>
     <div className={`event-poster poster-${event.color}`}>
       {event.posterUrl ? <img src={event.posterUrl} alt={`${event.title} 포스터`} /> : <>
         <span className="poster-brand">DEWS <span>도원동교회 이슬청년부</span></span>
         <span className="poster-heading">{event.title}</span>
         <span className="poster-motif" aria-hidden="true"><i /><i /><i /></span>
-        <span className="poster-bottom"><strong>{event.month}.{event.day}</strong><span>2026 · {event.category}<br />미리보기용 포스터</span></span>
+        <span className="poster-bottom"><strong>{event.month}.{event.day}</strong><span>{event.date.slice(0,4)} · {event.category}<br />기본 안내 이미지</span></span>
       </>}
       <span className="poster-open" aria-hidden="true"><ArrowUpRight size={19} /></span>
     </div>
@@ -22,13 +22,13 @@ export function PosterBoard({ onOpen }: Props) {
   </button>)}</div>
 }
 
-export function EventCalendar({ onOpen }: Props) {
+export function EventCalendar({ onOpen, events = calendarEvents }: Props) {
   const [today] = useState(() => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul' }).format(new Date()))
   const [year, month] = today.split('-').map(Number)
   const [view, setView] = useState({ year, month: month - 1 })
   const [selected, setSelected] = useState<string | null>(null)
   const prefix = dateKey(view.year, view.month, 1).slice(0, 7)
-  const monthEvents = calendarEvents.filter(event => event.date.startsWith(prefix))
+  const monthEvents = events.filter(event => event.date.startsWith(prefix))
   const shownEvents = selected ? monthEvents.filter(event => event.date === selected) : monthEvents
   const offset = new Date(view.year, view.month, 1).getDay()
   const count = new Date(view.year, view.month + 1, 0).getDate()
