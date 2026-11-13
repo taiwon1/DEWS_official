@@ -5,12 +5,12 @@ export const supabase = createClient(env.VITE_SUPABASE_URL || 'http://127.0.0.1:
 export const loginEmail = (username: string) => 'u'+Array.from(new TextEncoder().encode(username.trim())).map(n=>n.toString(16).padStart(2,'0')).join('')+'@dews.test'
 export const today = () => new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date())
 export const formatKoreanDate = (value:string, time=false) => new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',...(time?{hour:'2-digit' as const,minute:'2-digit' as const}:{})}).format(new Date(value))
-export type Person = { id:string; name:string; birth_date:string|null; first_visit:string; phone:string|null; status:string; full_member:boolean; education_requested:boolean; educated:boolean; eligible:boolean; education:number[]; group_id:string|null; streak:number|null; rate:number|null }
+export type Person = { id:string; name:string; birth_date:string|null; cohort?:string; first_visit:string; phone:string|null; status:string; full_member:boolean; education_requested:boolean; educated:boolean; eligible:boolean; education:number[]; group_id:string|null; streak:number|null; rate:number|null }
 export type Group = {id:string; cycle_id:string; name:string; leader_id:string; deputy_id:string|null}
 export type Cycle = {id:string; name:string; starts_on:string; ends_on:string|null}
 export type Membership = {person_id:string; group_id:string; starts_on:string; ends_on:string|null}
 export type Attend = {group_id:string; day:string; meeting:'worship'|'group'; present:string[]; roster:string[]; version:number}
-export type Note = {id:string; person_id:string; cycle_id:string; author_name:string; kind:string; body:string; prayer:string; next_contact:string|null; done:boolean; created_at:string}
+export type Note = {id:string; person_id:string; cycle_id:string; author_name:string; kind:string; body:string; prayer:string; care_date:string|null; updated_at:string|null; mine:boolean; created_at:string}
 export type EventRow = {id:string; title:string; description:string; day:string; location:string; category:string; poster:string; version:number}
 export type Comment = {id:string; body:string; mine:boolean; created_at:string}
 export type Post = {id:string; title:string; body:string; visibility:'public'|'private'; mine:boolean; created_at:string; comments:Comment[]}

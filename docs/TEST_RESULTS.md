@@ -1,6 +1,6 @@
 # 로컬 통합 검증 결과
 
-실행: 2026-11-13T00:09:35.914Z
+실행: 2026-11-13T00:34:19.615Z
 
 - PASS: 19 seed accounts authenticate and load server-filtered snapshots
 - PASS: anonymous session and direct table reads/writes denied
@@ -13,7 +13,7 @@
 - PASS: education distinct lessons, six-month eligibility and group assignment
 - PASS: 2/4/26-week alerts and unknown weeks are not absences
 - PASS: long absence, expulsion, reinstatement and rights are separate audited operations
-- PASS: care write permissions, shared/private notes and contact completion
+- PASS: care date, author-only update/delete and visibility escalation denial
 - PASS: contact corrections require officer authority and persist
 - PASS: event and club management restricted to officers/pastors
 - PASS: plan draft, future reservation, duplicate/education guards and cancel
