@@ -11,7 +11,8 @@
     "db:start": "supabase start",
     "db:migrate": "supabase migration up",
     "seed:accounts": "node scripts/seed-accounts.mjs",
-    "test:integration": "node scripts/integration-test.mjs"
+    "test:integration": "node scripts/integration-test.mjs",
+    "build:staging": "tsc -b && vite build --mode staging"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
