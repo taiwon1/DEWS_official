@@ -23,3 +23,10 @@
 - Cloudflare 계정 로그인 유지 확인. 앱 생성 화면에서 Verify your account 이메일 인증 창이 배포를 차단한다. 사용자에게 가입 이메일의 인증 링크 확인을 요청했다.
 - 아직 Cloudflare 앱 생성/배포는 실행하지 않았다. 중복 프로젝트 생성 없음.
 - 다음 순서: 이메일 인증 → Pages 프로젝트/빌드 연결 → 공개 Supabase 환경변수 → 클라우드 인증 방식/테스트 계정 검증 → 시범 배포 확인. 실데이터 이전은 그 이후.
+
+## 2026-11-17 첫 화면 배포 완료
+- Cloudflare 이메일 인증 및 사용자의 GitHub 연결 완료 확인. dews-official 프로젝트의 codex/initial-platform 브랜치를 pnpm build:staging / dist로 배포했다.
+- URL: https://dews-official.pages.dev/ . 브라우저 홈 렌더링 확인. 배포 커밋 df9b042.
+- Cloudflare 환경변수에 Supabase 프로젝트 URL과 공개 publishable 키만 설정. 서비스 키 미사용.
+- Supabase auth/v1/health 200. REST 루트 비인증 요청은 401. 대시보드 Unhealthy 표시는 원인 추가 확인 필요하며 전체 백엔드 정상 검증으로 간주하지 않는다.
+- 클라우드 테스트 계정/가상 명단 생성과 로그인 후 역할별 검증은 미완료. 로컬 테스트 계정은 배포 사이트에서 사용할 수 없다. 실제 데이터 이전 금지 상태 유지.
