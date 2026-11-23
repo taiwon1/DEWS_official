@@ -1,7 +1,14 @@
 import { createClient } from '@supabase/supabase-js'
 const env = (import.meta as unknown as { env: Record<string,string> }).env
 export const configured = Boolean(env.VITE_SUPABASE_URL && env.VITE_SUPABASE_ANON_KEY)
-export const supabase = createClient(env.VITE_SUPABASE_URL || 'http://127.0.0.1:54321', env.VITE_SUPABASE_ANON_KEY || 'not-configured')
+// A QA tab stores its session separately. Supabase still validates credentials and roles.
+const qaTab = new URLSearchParams(location.search).get('qa-tab') ?? ''
+const isolatedTab = env.MODE === 'staging' && /^(pastor|leader|member)$/.test(qaTab)
+export const supabase = createClient(
+ env.VITE_SUPABASE_URL || 'http://127.0.0.1:54321',
+ env.VITE_SUPABASE_ANON_KEY || 'not-configured',
+ isolatedTab ? {auth:{storage:sessionStorage,storageKey:`dews-qa-tab-${qaTab}`}} : undefined,
+)
 export const loginEmail = (username: string) => 'u'+Array.from(new TextEncoder().encode(username.trim())).map(n=>n.toString(16).padStart(2,'0')).join('')+'@dews.test'
 export const today = () => new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date())
 export const formatKoreanDate = (value:string, time=false) => new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',...(time?{hour:'2-digit' as const,minute:'2-digit' as const}:{})}).format(new Date(value))
