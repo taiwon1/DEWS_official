@@ -1,19 +1,19 @@
 # 로컬 통합 검증 결과
 
-실행: 2026-11-13T00:34:19.615Z
+실행: 2026-11-23T17:28:14.261Z
 
-- PASS: 19 seed accounts authenticate and load server-filtered snapshots
+- PASS: 10 seed accounts authenticate and load server-filtered snapshots
 - PASS: anonymous session and direct table reads/writes denied
 - PASS: member response contains no contacts of others, notes or author identity
-- PASS: leader scope, deputy attendance-only and secretary pastor-private exclusion
-- PASS: all seven officer positions can read private board but not pastoral notes
+- PASS: leader scope and private care separation
+- PASS: officer can read private board but not care notes
 - PASS: private post/comment persist and unauthorized comments are denied
 - PASS: public post/comment visible to all logged-in roles
-- PASS: attendance two meetings, optimistic conflict, deputy and scope checks
+- PASS: attendance two meetings, optimistic conflict, admin and scope checks
 - PASS: education distinct lessons, six-month eligibility and group assignment
 - PASS: 2/4/26-week alerts and unknown weeks are not absences
 - PASS: long absence, expulsion, reinstatement and rights are separate audited operations
-- PASS: care date, author-only update/delete and visibility escalation denial
+- PASS: care date, author/admin update/delete and visibility escalation denial
 - PASS: contact corrections require officer authority and persist
 - PASS: event and club management restricted to officers/pastors
 - PASS: plan draft, future reservation, duplicate/education guards and cancel

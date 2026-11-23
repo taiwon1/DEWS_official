@@ -8,3 +8,61 @@
 .portal-main{max-width:1380px;color:#263a35;font-size:14px;line-height:1.6}.portal-main h1{font-size:26px;letter-spacing:-.6px;font-weight:700}.portal-main h2{font-size:20px;letter-spacing:-.3px}.portal-description{color:#65716c;font-size:14px;line-height:1.7;max-width:850px}.portal-main label{color:#394e46;font-size:14px}.portal-main input:not([type=checkbox]):not([type=radio]),.portal-main select,.portal-main textarea{font-size:14px;min-height:42px;color:#293e35;border-color:#d5ddd7;min-width:0}.portal-main .portal-box>label{display:grid;gap:8px;margin-top:20px;max-width:650px}.portal-main input[type=file]{width:100%;font-size:13px;padding:10px}.portal-main input[type=file]::file-selector-button{border:0;border-radius:5px;background:#edf2ee;color:#314e40;padding:6px 12px;margin-right:12px}.portal-main .portal-box p,.portal-facts{font-size:14px;color:#53635b}.portal-main .portal-box small{font-size:12px;color:#65736a}.portal-nav button{font-size:14px;color:#59675f;padding:10px 12px}.portal-nav button:hover{background:#f1f5f1;border-radius:6px}.portal-toolbar{gap:12px;margin:20px 0;align-items:center}.portal-toolbar .inline-check{flex-direction:row;margin:0}.portal-tag{font-size:12px;color:#496350;background:#edf3eb;white-space:nowrap}.portal-welcome{padding:24px 28px;background:#f0f5f0;color:#273e32;border:1px solid #dce6dc}.portal-welcome p,.portal-welcome span{color:#5c7060}.portal-welcome h1{font-size:26px;margin:8px 0}.portal-shortcuts{gap:12px;margin:20px 0 32px}.portal-shortcuts button{padding:18px 20px;background:white;gap:8px}.portal-shortcuts span{color:#5c6d60;font-size:13px}.portal-test-notice{color:#5f735a}.portal-header span{font-size:12px;color:#62745c;max-width:320px}.portal-form{gap:22px}.portal-form label{min-width:0}.portal-form textarea{line-height:1.7}.care-prayer{display:block!important}.care-record small{line-height:1.6}.member-table-scroll{max-height:620px;overflow:auto;border:1px solid #dce3dd;border-radius:10px;background:#fff}.member-table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;white-space:nowrap}.member-table th,.member-table td{padding:12px 16px;border-bottom:1px solid #e7ece7;text-align:left;line-height:1.5}.member-table thead th{position:sticky;top:0;background:#eef3ef;z-index:2;color:#5b6c61;font-size:12px;font-weight:600}.member-table tbody th{position:sticky;left:0;z-index:1;background:white;min-width:125px}.member-table tbody th button{display:flex;align-items:center;gap:16px;font-weight:600;width:100%;text-align:left}.member-table tbody th span{font-size:11px;font-weight:400;color:#72877a}.member-table tbody tr:hover td,.member-table tbody tr:hover th,.member-table tr.selected td,.member-table tr.selected th{background:#f0f6ef}.education-complete{color:#39764b}.table-empty{padding:24px;text-align:center;color:#67766a}.member-detail{max-width:900px}.member-detail .care-heading h2{margin:0}.portal-main .attendance-table td,.portal-main .attendance-table th{padding-top:12px;padding-bottom:12px}.portal-main button:disabled{cursor:not-allowed}.portal-main .primary-button,.portal-main .soft-button{min-height:40px;line-height:1.4}.portal-main :is(input,select,textarea):focus{border-color:#75967f}.portal-main .inline-check input{flex-shrink:0}.portal-main section{min-width:0}@media(max-width:800px){.portal-main{padding:16px 16px 40px}.portal-nav{gap:4px}.portal-header{gap:10px}.portal-header>div{min-width:0}.portal-header span{max-width:150px;overflow-wrap:anywhere}.portal-header strong{font-size:13px}.portal-main h1{font-size:23px}.portal-toolbar>input{flex:1 1 150px;width:100%}.portal-toolbar>select{flex:1 1 130px}.member-table-scroll{max-height:520px}.member-table th,.member-table td{padding:11px 12px}.member-table tbody th{min-width:112px}.portal-welcome{padding:22px}.portal-welcome h1{font-size:23px}.portal-shortcuts button{padding:16px}.portal-form{gap:18px}.care-heading{flex-wrap:wrap}.portal-header .soft-button{flex-shrink:0}.portal-facts{grid-template-columns:80px minmax(0,1fr)}}
 
 .member-table tbody tr{cursor:pointer}.member-dialog{padding:0;border:1px solid #dce4de;border-radius:16px;width:min(760px,calc(100vw - 32px));max-height:calc(100dvh - 40px);margin:auto;color:#293e35;background:white;overflow:auto;box-shadow:0 24px 80px #183a312e}.member-dialog::backdrop{background:#182f2966;backdrop-filter:blur(3px)}.member-dialog .member-detail{margin:0;border:0;border-radius:0;padding:28px}.member-dialog .care-heading{position:sticky;top:-28px;background:white;padding:16px 0;margin-top:-16px;z-index:2;border-bottom:1px solid #e7ece8}.member-dialog h2{font-size:20px;overflow-wrap:anywhere}.member-dialog .care-heading button{flex-shrink:0}.member-table td:not(:last-child),.member-table thead th:not(:first-child):not(:last-child){text-align:center}.member-table th,.member-table td{vertical-align:middle}.portal-main,.portal-header,.portal-nav,.member-dialog{font-family:Arial,'Malgun Gothic','Apple SD Gothic Neo',sans-serif;word-break:keep-all;overflow-wrap:break-word}.member-dialog :focus-visible{outline:2px solid #54816a;outline-offset:3px}@media(max-width:600px){.member-dialog{width:calc(100vw - 20px);max-height:calc(100dvh - 24px)}.member-dialog .member-detail{padding:20px}.member-dialog .care-heading{top:-20px}.member-dialog h2{font-size:18px}.member-dialog .portal-facts{font-size:13px}.member-dialog .portal-form{grid-template-columns:minmax(0,1fr)}}
+
+/* Shared workspace rhythm and brand */
+.portal-header,.portal-main,.auth-page,.member-dialog{font-family:inherit}
+.portal-header{height:80px;gap:16px}
+.portal-header .brand{flex:none}
+.portal-header .brand-caption{font-size:11px;color:#526760}
+.portal-header>div{min-width:0}
+.portal-header>div span{color:#526760}
+.portal-nav{gap:8px;padding-block:8px}
+.portal-nav button.active{background:#e9f3ef;color:#204b45;border-color:#54897c}
+.portal-main{color:#233732}
+.portal-main :is(input:not([type=checkbox]):not([type=radio]),select){box-sizing:border-box;height:44px;line-height:1.4}
+.portal-toolbar{min-width:0;align-items:end;gap:12px}
+.portal-toolbar>span{min-height:44px;display:inline-flex;align-items:center}
+.attendance-filters label{display:grid;gap:6px;min-width:0}
+.attendance-filters label>*{width:100%;margin:0}
+.attendance-filters label:last-child{flex:1 1 180px;max-width:280px}
+.portal-main .attendance-table{table-layout:fixed;width:100%}
+.attendance-table col:first-child{width:44%}
+.attendance-table col:nth-child(n+2){width:28%}
+.portal-main .attendance-table :is(th,td){vertical-align:middle;padding:10px 12px}
+.attendance-table :is(th,td):not(:first-child){text-align:center}
+.attendance-cell{display:grid;justify-items:center;align-content:center;gap:4px;min-height:44px}
+.attendance-cell input{margin:0}
+.care-record{display:grid;gap:10px;padding:20px 24px}
+.care-record :is(p,small){margin:0}
+.care-record .care-meta{font-size:13px;color:#53635b}
+.care-record .care-prayer{padding:12px 16px}
+.care-prayer p{margin-top:4px}
+.care-record .care-actions{margin-top:2px}
+.member-dialog{overflow:hidden}
+.member-dialog .member-detail{display:flex;flex-direction:column;padding:0;max-height:calc(100dvh - 42px)}
+.member-dialog-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 24px;border-bottom:1px solid #e1ebe5}
+.portal-main .member-dialog-heading h2{margin:0;line-height:1.35}
+.member-dialog-heading button{flex:none}
+.member-dialog-body{overflow:auto;overscroll-behavior:contain;padding:20px 24px 28px;min-height:0}
+.member-dialog-body .portal-facts{margin-top:0}
+.officer-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.65fr);gap:20px;align-items:start}
+.officer-layout .portal-box{margin:0}
+.officer-layout h2{margin-top:0}
+.officer-editor{display:grid;gap:16px}
+.officer-editor input[type=text],.officer-editor>label input{display:block;width:100%;margin-top:6px}
+.officer-editor fieldset{border:1px solid #dce7df;border-radius:8px;min-width:0;margin:0;padding:12px}
+.officer-editor legend{padding:0 6px;font-weight:600}
+.officer-candidates,.officer-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px}
+.officer-candidates{max-height:210px;overflow:auto}
+.officer-editor fieldset label{display:flex;align-items:center;gap:6px;min-height:34px}
+.officer-roster{list-style:none;padding:0;margin:0}
+.officer-roster button{width:100%;display:flex;justify-content:space-between;text-align:left;gap:12px;padding:10px 0;border-bottom:1px solid #e4ebe6}
+.officer-roster button span{color:#526760}
+@media(max-width:640px){
+ .portal-header{height:68px}.portal-header .brand-caption{display:none}
+ .officer-layout{grid-template-columns:minmax(0,1fr)}
+ .member-dialog .member-detail{max-height:calc(100dvh - 26px)}
+ .member-dialog-heading,.member-dialog-body{padding:14px 16px}
+ .portal-main .attendance-table :is(td,th){padding-inline:6px}
+ .care-record{padding:16px}
+}

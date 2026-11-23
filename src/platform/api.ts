@@ -25,7 +25,7 @@ export type Assignment = {name:string; leader_id:string; deputy_id?:string; memb
 export type Plan = {id:string; name:string; assignments:Assignment[]; fixed:Record<string,number>; apply_on:string|null; state:string; error:string|null}
 export type Snapshot = {me:{id:string; name:string; username:string; roles:string[]}; people:Person[]; groups:Group[]; groupmates:{id:string;name:string}[]; cycles:Cycle[]; memberships:Membership[]; attendance:Attend[]; notes:Note[]; timeline:{id:string;person_id:string;action:string;reason:string;created_at:string}[]; events:EventRow[]; clubs:{id:string;name:string;description:string;schedule:string}[]; posts:Post[]; plans:Plan[]}
 export async function loadSnapshot():Promise<Snapshot>{const {data,error}=await supabase.rpc('app_snapshot');if(error)throw new Error(error.message);return data}
-export async function action(name:string,payload:Record<string,unknown> = {}) {const {data,error}=await supabase.rpc('app_action',{action:name,payload});if(error)throw new Error(error.message);return data as {id?:string;token?:string}}
+export async function action(name:string,payload:Record<string,unknown> = {}) {const {data,error}=await (name==='person.create' ? supabase.rpc('register_newcomer',{payload}) : supabase.rpc('app_action',{action:name,payload}));if(error)throw new Error(error.message);return data as {id?:string;token?:string}}
 export const officers=['officer']
 export const roleNames:Record<string,string>={member:'일반 청년',pastor:'최고 관리자',officer:'임원',leader:'소그룹 리더',newcomer:'새가족반'}
 export const statusNames:Record<string,string>={newcomer:'새가족',enrolled:'재적',long_absent:'장결',removed:'제적'}

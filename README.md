@@ -2,6 +2,14 @@
 
 도원동교회 이슬청년부의 출석·돌봄·소그룹 관리 플랫폼입니다. React / TypeScript / Vite 화면과 Docker 기반 로컬 Supabase 인증·DB를 연결했습니다. 현재는 합성 인원 150명으로 검증하는 개발 환경이며 외부 운영 배포는 하지 않았습니다.
 
+## 2026-11-24 최종 빌드
+
+다섯 역할의 관리 화면, 임원 직책 관리, 새가족 등록 정보, 구성원 명단과 출석 화면 개선을 포함합니다. 기본 빌드와 Cloudflare용 staging 빌드, 단위 테스트 17개, 로컬 통합 시나리오 18개를 통과했습니다. 기존 Cloudflare 시범 사이트와 이번 검토본은 버전이 다릅니다.
+
+- [역할별 사용 설명서](docs/USER_GUIDE.md)
+- [통합 검증 결과](docs/TEST_RESULTS.md)
+- [클라우드 DB 적용 및 배포 순서](docs/DEPLOYMENT.md#최종-빌드-적용-순서)
+
 ## 실행
 
 Windows Node 24, pnpm, 실행 중인 Docker Desktop이 필요합니다.

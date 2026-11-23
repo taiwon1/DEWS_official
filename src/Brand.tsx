@@ -1,0 +1,1 @@
+export default function Brand({onClick}:{onClick:()=>void}){return <button type="button" className="brand" onClick={onClick} aria-label="DEWS 홈"><span className="brand-word">DEWS<span className="brand-dot">.</span></span><span className="brand-caption">도원동교회<br />이슬청년부</span></button>}
