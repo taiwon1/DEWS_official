@@ -9,7 +9,7 @@ import GroupPlanner from './GroupPlanner'
 import LiveEvents from './LiveEvents'
 
 export type Run = (name:string,payload?:Record<string,unknown>)=>Promise<{id?:string;token?:string}|null>
-export type PanelProps = {data:Snapshot;run:Run;busy:boolean}
+export type PanelProps = {data:Snapshot;run:Run;busy:boolean;error?:string;message?:string}
 type Page='home'|'people'|'attendance'|'care'|'groups'|'events'|'board'|'profile'
 export default function Portal({onLogout}:{onLogout:()=>Promise<void>}){
  const [data,setData]=useState<Snapshot|null>(null),[error,setError]=useState(''),[message,setMessage]=useState(''),[busy,setBusy]=useState(false),[page,setPage]=useState<Page>('home')
@@ -18,14 +18,13 @@ export default function Portal({onLogout}:{onLogout:()=>Promise<void>}){
  const run:Run=async(name,payload={})=>{setBusy(true);setError('');setMessage('');try{const result=await action(name,payload);await reload();setMessage('저장했습니다.');return result}catch(e){setError(e instanceof Error?e.message:'저장 실패');return null}finally{setBusy(false)}}
  if(!data)return <main className="auth-card"><h1>DEWS</h1><p>{error||'사용자 권한과 데이터를 불러오는 중…'}</p><button className="soft-button" onClick={()=>void reload()}>다시 불러오기</button><button className="soft-button" onClick={()=>void onLogout()}>로그아웃</button></main>
  const has=(...roles:string[])=>data.me.roles.some(r=>roles.includes(r))
- const leads=data.groups.some(g=>g.leader_id===data.me.id&&data.cycles.some(c=>c.id===g.cycle_id&&!c.ends_on))
- const deputies=data.groups.some(g=>g.deputy_id===data.me.id&&data.cycles.some(c=>c.id===g.cycle_id&&!c.ends_on))
+ const leads=has('leader')&&data.groups.some(g=>g.leader_id===data.me.id&&data.cycles.some(c=>c.id===g.cycle_id&&!c.ends_on))
  const canPeople=has('pastor','newcomer',...officers)||leads
- const canAttendance=has('secretary2','pastor')||leads||deputies
- const canCare=has('pastor','secretary2','newcomer')||leads
- const pages:[Page,string,boolean][]=[['home','홈',true],['people','인원 · 교육',canPeople],['attendance','출석 체크',canAttendance],['care','돌봄 기록',canCare],['groups','소그룹 편성',has('secretary2','pastor')],['events','행사 · 동아리',true],['board','게시판',true],['profile','내 정보',true]]
+ const canAttendance=has('pastor')||leads
+ const canCare=has('pastor','newcomer')||leads
+ const pages:[Page,string,boolean][]=[['home','홈',true],['people','인원 · 교육',canPeople],['attendance','출석 체크',canAttendance],['care','돌봄 기록',canCare],['groups','소그룹 편성',has('officer','pastor')],['events','행사 · 동아리',true],['board','게시판',true],['profile','내 정보',true]]
  const allowed=pages.find(p=>p[0]===page)?.[2]
- const props={data,run,busy}
+ const props={data,run,busy,error,message}
  return <><header className="portal-header"><button className="brand-word" onClick={()=>setPage('home')}>DEWS.</button><div><strong>{data.me.name}</strong><span>{data.me.roles.map(r=>roleNames[r]).join(' · ')}</span></div><button className="soft-button" onClick={()=>void onLogout()}><LogOut size={15}/> 로그아웃</button></header>
  <div className="portal-test-notice">로컬 테스트 · 합성 인원 150명 · 실제 개인정보를 입력하지 마세요.</div>
  <nav className="portal-nav" aria-label="사용자 메뉴">{pages.filter(p=>p[2]).map(([key,label])=><button key={key} aria-current={page===key?'page':undefined} className={page===key?'active':''} onClick={()=>{setPage(key);setError('');setMessage('')}}>{label}</button>)}</nav>

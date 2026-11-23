@@ -5,8 +5,8 @@ import { localConfig,loginEmail } from './local-config.mjs'
 const config=localConfig()
 const admin=createClient(config.API_URL,config.SERVICE_ROLE_KEY,{auth:{persistSession:false,autoRefreshToken:false}})
 const id=n=>{ const h=createHash('md5').update('person-'+n).digest('hex'); return h.replace(/(.{8})(.{4})(.{4})(.{4})(.{12})/,'$1-$2-$3-$4-$5') }
-const roles={1:['pastor'],2:['pastor'],3:['secretary2'],4:['president2'],5:['president1'],6:['secretary1'],7:['pd'],8:['treasurer'],9:['clerk'],10:['leader'],11:['leader'],12:['leader','secretary1'],19:['deputy'],20:['newcomer'],21:['member'],22:['member'],23:['member'],24:['member'],150:['admin']}
-const roleLabels={pastor:'목회자',secretary2:'2청 총무',president2:'2청 회장',president1:'1청 회장',secretary1:'1청 총무',pd:'PD',treasurer:'회계',clerk:'서기',leader:'리더',deputy:'부리더',newcomer:'새가족반',member:'청년',admin:'테스트 관리자'}
+const roles={1:['pastor'],3:['officer'],10:['leader'],11:['leader'],12:['leader','officer'],20:['newcomer'],21:['member'],22:['member'],23:['member'],24:['member']}
+const roleLabels={pastor:'최고 관리자',officer:'임원',leader:'리더',newcomer:'새가족반',member:'일반 청년'}
 const password='DewsLocal!2026'
 const accounts=[]
 const {data:existing,error:existingError}=await admin.auth.admin.listUsers({perPage:1000})
