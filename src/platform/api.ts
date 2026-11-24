@@ -4,11 +4,26 @@ export const configured = Boolean(env.VITE_SUPABASE_URL && env.VITE_SUPABASE_ANO
 // A QA tab stores its session separately. Supabase still validates credentials and roles.
 const qaTab = new URLSearchParams(location.search).get('qa-tab') ?? ''
 const isolatedTab = env.MODE === 'staging' && /^(pastor|officer|leader|newcomer|member)$/.test(qaTab)
-export const supabase = createClient(
- env.VITE_SUPABASE_URL || 'http://127.0.0.1:54321',
- env.VITE_SUPABASE_ANON_KEY || 'not-configured',
- isolatedTab ? {auth:{storage:sessionStorage,storageKey:`dews-qa-tab-${qaTab}`}} : undefined,
-)
+const url = env.VITE_SUPABASE_URL || 'http://127.0.0.1:54321'
+const publicKey = env.VITE_SUPABASE_ANON_KEY || 'not-configured'
+const tabKey = 'dews-tab-session-' + new URL(url).hostname
+function clientFor(persistent: boolean) {
+ if (isolatedTab) return createClient(url, publicKey, {auth:{storage:sessionStorage,storageKey:`dews-qa-tab-${qaTab}`}})
+ if (persistent) return createClient(url, publicKey)
+ let key = sessionStorage.getItem(tabKey)
+ if (!key) { key = crypto.randomUUID(); sessionStorage.setItem(tabKey,key) }
+ return createClient(url, publicKey, {auth:{storage:sessionStorage,storageKey:'dews-session-'+key}})
+}
+let persistent = !sessionStorage.getItem(tabKey)
+export let supabase = clientFor(persistent)
+export function chooseLoginStorage(remember: boolean) {
+ if (!isolatedTab && persistent !== remember) {
+  if (remember) sessionStorage.removeItem(tabKey)
+  persistent = remember
+  supabase = clientFor(remember)
+ }
+ return supabase
+}
 export const loginEmail = (username: string) => 'u'+Array.from(new TextEncoder().encode(username.trim())).map(n=>n.toString(16).padStart(2,'0')).join('')+'@dews.test'
 export const today = () => new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date())
 export const formatKoreanDate = (value:string, time=false) => new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',...(time?{hour:'2-digit' as const,minute:'2-digit' as const}:{})}).format(new Date(value))

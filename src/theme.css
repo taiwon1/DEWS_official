@@ -272,3 +272,4 @@ body:has(.directory) { background: white; }
   .portal-main .directory-search input:not([type]), .directory-tools select { width: 100%; }
   .portal-main .directory-tools select { padding-inline: 4px; }
 }
+.auth-card .remember-login { display:flex; align-items:center; gap:8px; } .auth-card .remember-login input { width:18px; height:18px; margin:0; accent-color:var(--pine); }
